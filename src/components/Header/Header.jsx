@@ -1,6 +1,6 @@
-import Carousel from './Carousel'
+import Carousel from './HeaderCarousel'
 
-function Header () {
+function Header() {
   return (
     <header>
       <Carousel />
