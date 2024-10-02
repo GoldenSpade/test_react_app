@@ -13,9 +13,7 @@ function Card(props) {
         alt="..."
       />
       <div className="card-body">
-        {/* Обрезаем title до 20 символов с проверкой на существование */}
         <h5 className="card-title">{truncateText(props.post?.title, 20)}</h5>
-        {/* Обрезаем body до 100 символов с проверкой на существование */}
         <p className="card-text">{truncateText(props.post?.body, 100)}</p>
         <span className="btn btn-secondary" onClick={props.cardBtnClick}>
           Go somewhere

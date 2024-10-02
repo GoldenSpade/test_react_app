@@ -3,7 +3,6 @@ import DoubleText from './components/Text/DoubleText'
 import BlockTitle from './components/Text/BlockTitle'
 import Accordion from './components/Accordion'
 import Cards from './components/Card/Cards'
-import Card from './components/Card/Card'
 import Footer from './components/Footer/Footer'
 
 import { posts } from './mocks/posts'
@@ -12,9 +11,6 @@ import { useEffect, useState } from 'react'
 
 function App() {
   const [statePosts, setStatePosts] = useState([])
-  const [blockTitle, setBlockTitle] = useState('Часть для тестирования')
-
-  const changeTitleHandler = (newTitle) => setBlockTitle(newTitle)
 
   useEffect(() => {
     setStatePosts(posts)
@@ -67,50 +63,11 @@ function App() {
             titleText="Cards"
           />
           <Cards posts={statePosts} postsLimit={16} />
-
-          {/* Часть для тестирования */}
-
-          <BlockTitle
-            classList={'text-center mt-4 mb-4 mt-lg-5'}
-            titleText={blockTitle}
-          />
-
-          <div className="container-fluid">
-            <div className="row">
-              <div className="col-12 col-sm-6 col-md-6 col-xl-3">
-                <Card
-                  post={statePosts[0]}
-                  index={0}
-                  cardBtnClick={changeTitleHandler.bind(
-                    this,
-                    statePosts[0]?.title
-                  )}
-                />
-              </div>
-              <div className="col-12 col-sm-6 col-md-6 col-xl-3">
-                <Card
-                  post={statePosts[1]}
-                  index={1}
-                  cardBtnClick={changeTitleHandler.bind(
-                    this,
-                    statePosts[1]?.title
-                  )}
-                />
-              </div>
-              <div className="col-12 col-sm-6 col-md-6 col-xl-3">
-                <Card
-                  post={statePosts[2]}
-                  index={2}
-                  cardBtnClick={changeTitleHandler.bind(
-                    this,
-                    statePosts[2]?.title
-                  )}
-                />
-              </div>
-            </div>
-          </div>
-
-          <Footer />
+          {/* <BlockTitle
+            classList={'text-center mt-4 mb-4'}
+            titleText="Регистрация"
+          /> */}
+          <Footer classList={'footer bg-dark fs-6 mt-3 pt-5 pb-5'} />
         </div>
       </div>
     </div>

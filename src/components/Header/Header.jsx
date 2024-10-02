@@ -1,9 +1,11 @@
 import Carousel from './HeaderCarousel'
+import LoginRegistrationBlock from '../Login/LoginRegistrationBlock'
 
 function Header() {
   return (
-    <header>
+    <header className="bg-dark">
       <Carousel />
+      <LoginRegistrationBlock />
     </header>
   )
 }

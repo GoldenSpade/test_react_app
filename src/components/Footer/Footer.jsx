@@ -1,12 +1,12 @@
 import { useEffect, useState } from 'react'
 
-function Footer() {
+function Footer(props) {
   const [currentYear, setCurrentYear] = useState('')
 
   useEffect(() => setCurrentYear(new Date().getFullYear()), [])
 
   return (
-    <footer className="footer bg-dark fs-6 mt-4 pt-5 pb-5">
+    <footer className={props.classList}>
       <p className="footer__text text-center text-white">
         Lorem ipsum dolor sit amet consectetur adipisicing elit. Molestiae,
         aliquam ipsa. Ullam, maxime ratione ipsum velit quia earum harum nobis
