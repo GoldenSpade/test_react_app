@@ -4,21 +4,58 @@ import BlockTitle from './components/Text/BlockTitle'
 import Accordion from './components/Accordion'
 import Cards from './components/Card/Cards'
 import Footer from './components/Footer/Footer'
-
+import Car from './components/Car/Car'
 import { posts } from './mocks/posts'
 
 import { useEffect, useState } from 'react'
 
 function App() {
   const [statePosts, setStatePosts] = useState([])
+  const [cardsTitle, setCardsTitle] = useState('Cards')
 
   useEffect(() => {
     setStatePosts(posts)
   }, [])
 
+  const changeCardsTitle = (postId, postTitle, newTitle) => {
+    if (newTitle.length === 0) {
+      setCardsTitle(`${postId}. ${postTitle}`)
+    } else {
+      setCardsTitle(`${postId}. ${newTitle}`)
+    }
+  }
+
+  const removePost = (index) => {
+    const postsCopy = [...statePosts]
+    postsCopy.splice(index, 1)
+    setStatePosts(postsCopy)
+  }
+
+  const [classes, setClasses] = useState(['ms-3'])
+
+  const toggleClass = () => {
+    if (classes.length === 1) {
+      const newClasses = [
+        ...classes,
+        ...['bg-danger', 'p-2', 'fw-bold', 'text-white', 'rounded'],
+      ]
+      setClasses(newClasses)
+    } else {
+      setClasses(['ms-3'])
+    }
+  }
   return (
     <div className="app">
       <Header />
+
+      <div className="d-flex justify-content-center align-items-center mb-3">
+        <button className="btn btn-primary" onClick={toggleClass}>
+          Change class
+        </button>
+        <span className={classes.join(' ')}>Dynamic classes</span>
+      </div>
+
+      <Car />
       <BlockTitle
         classList={'text-center mt-4 mt-lg-5'}
         titleText="Title text"
@@ -58,15 +95,18 @@ function App() {
             titleText="F.A.Q."
           />
           <Accordion />
+
+          {/* Cards title */}
           <BlockTitle
             classList={'text-center mt-4 mb-4 mt-lg-5'}
-            titleText="Cards"
+            titleText={cardsTitle}
           />
-          <Cards posts={statePosts} postsLimit={16} />
-          {/* <BlockTitle
-            classList={'text-center mt-4 mb-4'}
-            titleText="Регистрация"
-          /> */}
+          <Cards
+            posts={statePosts}
+            postsLimit={16}
+            handleCardChangeClick={changeCardsTitle}
+            handleCardRemoveBtnClick={removePost}
+          />
           <Footer classList={'footer bg-dark fs-6 mt-3 pt-5 pb-5'} />
         </div>
       </div>

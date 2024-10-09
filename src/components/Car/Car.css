@@ -1,0 +1,20 @@
+.Car {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  text-align: center;
+  border: solid 1px red;
+  box-shadow: black 1px 1px 1px;
+}
+
+input {
+  outline: none;
+}
+
+.input.green {
+  border: 2px solid green;
+}
+
+.input.red {
+  border: 2px solid red;
+}
